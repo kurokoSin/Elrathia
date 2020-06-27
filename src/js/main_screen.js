@@ -1,10 +1,7 @@
 {
-// 上手くjavascriptが読み込めない時は、
-// 「CORS エラー」のキーワードで探すと情報でてくるかもです。
-// FireFox の場合、 security.fileuri.strict_origin_policy  false 
-// で、ローカルのファイルを読み込める。
+alert('loading begin');
 
-// 参加メンバー登録画面
+// member register
 function screen1() {
   let key = 0;
   let members = [
@@ -28,21 +25,23 @@ function screen1() {
     document.body.appendChild(hdiv);
   });
 
-  const addButton = document.createElement('input');
-  addButton.type = 'button';
-  addButton.value ='アンケート開始';
-  addButton.onclieck = screen2_1(members);
+  const addButton    = document.createElement('input');
+  addButton.type     = 'button';
+  addButton.value    ='アンケート開始';
+  // addButton.onclieck = screen2_1(members);
   document.body.appendChild(AddButon);
 }
 
-// 好きな人選択画面　コントローラー
-function screen2(members) {
-  members.forEach( function( user ) {
-    // screen2_1(user.name);
-    // screen2_2(member, user);
-  });
-}
+//  // 好きな人選択画面　コントローラー
+//  function screen2(members) {
+//    members.forEach( function( user ) {
+//      // screen2_1(user.name);
+//      // screen2_2(member, user);
+//    });
+//  }
 
+alert('loaded to exec');
 screen1();
+alert('loading complete');
 
 }
