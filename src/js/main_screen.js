@@ -1,4 +1,9 @@
 {
+// 上手くjavascriptが読み込めない時は、
+// 「CORS エラー」のキーワードで探すと情報でてくるかもです。
+// FireFox の場合、 security.fileuri.strict_origin_policy  false 
+// で、ローカルのファイルを読み込める。
+
 // 参加メンバー登録画面
 function screen1() {
   let key = 0;
