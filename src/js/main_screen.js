@@ -136,13 +136,14 @@ function screen3_1() {
 
 function love2_id(id){
   let pos = -1;
-  if( members[id] != null && Number.isFinite(members[id]['fav']) ){
+
+  if( Number.isFinite(members[id]['fav']) ){
     pos = members[id]['fav'];
-    if( pos != id ) {
-      pos = -1;
-    }
-    if( pos <= id ){ // 既に検索済みのペアなので無視する
-      pos = -1;
+    if( pos > 0 ) { // 自分　が　自分を好きは省くので 0 = 0 も除外する
+      let res = members[pos]['fav'];
+      if( res < 0 || res != id || pos <= id) {
+        pos = -1;  // 既に検索済みのペア(pos <= id)も無視する
+      }
     }
   }
  
@@ -165,24 +166,25 @@ function screen3_2(){
   for( let i=0; i<members.length; i++){
     let result = love2_id(i);
     if( result >= 0 ){
-      love2.push( {"id": id, "fav": result} );
+      love2.push( {"id": i, "fav": result} );
     }
   }
 
   // 表示
-  if( love2.length>0 ){
+  if( love2.length > 0 ){
     for( let i=0; i<love2.length; i++){
       const message = document.createElement('h1');
       message.innerText = members[love2[i]["id"]]["name"] + 'さん ♡'  + members[love2[i]["fav"]]["name"] + 'さん';
       document.body.appendChild(message);
     }
+    const msg = document.createElement('h1');
+    msg.innerText = 'おめでとうございます！！'
+    document.body.appendChild(msg);
   } else {
     const message = document.createElement('h1');
     message.innerText = '残念ながら、マッチングしませんでした。';
     document.body.appendChild(message);
   }
-  
-
 }
 
 
